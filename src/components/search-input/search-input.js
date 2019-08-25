@@ -4,7 +4,7 @@ import { Input } from 'antd';
 const { Search } = Input;
 
 function SearchInput() {
-  const onSearch = value => {
+  const onSearch = (value) => {
     console.log('search-input ', value);
   };
 
@@ -18,7 +18,7 @@ function SearchInput() {
         onSearch={onSearch}
       />
     </div>
-  )
+  );
 }
 
 export default SearchInput;

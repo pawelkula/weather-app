@@ -1,12 +1,12 @@
 .homepage-header {
-    margin-bottom: 6px;
+    margin-bottom: 0;
 }
 
 .homepage-subtitle {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .homepage-content {
     margin: 0 auto;
-    max-width: 360px;
+    text-align: center;
 }
