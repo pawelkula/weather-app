@@ -9,7 +9,7 @@ function ForecastResultHeader(props) {
   if (isEmpty(city)) return null;
 
   return (
-    <h3>{MESSAGES.FORECAST_RESULTS} {city.name}, {city.country}</h3>
+    <h3>{MESSAGES.FORECAST_RESULTS} {city.name} ({city.country})</h3>
   );
 }
 

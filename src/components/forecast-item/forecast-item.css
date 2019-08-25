@@ -1,0 +1,31 @@
+.forecast-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #EEEEEE;
+}
+
+.forecast-item-data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.forecast-item-temp {
+    display: flex;
+    margin-left: 10px;
+}
+
+.forecast-item-temp-day {
+    margin-right: 14px;
+    font-size: 32px;
+    color: #1890ff;
+}
+
+.forecast-item-temp-extremes {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-around;
+    font-size: 12px;
+}

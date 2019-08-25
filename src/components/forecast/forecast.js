@@ -14,7 +14,7 @@ const { Search } = Input;
 
 function Forecast() {
   const [data, setData] = useState({});
-  const [city, setCity] = useState('Krakow');
+  const [city, setCity] = useState('Las Palmas de Gran Canaria');
   const [error, setError] = useState('');
 
   useEffect(() => {

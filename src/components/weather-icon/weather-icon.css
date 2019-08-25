@@ -1,0 +1,44 @@
+.weather-icon {
+    width: 50px;
+    height: 50px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/icons/01d.svg);
+    background-size: 250%;
+}
+
+.weather-icon-01d {
+    background-image: url(../../assets/icons/01d.svg);
+}
+
+.weather-icon-02d {
+    background-image: url(../../assets/icons/02d.svg);
+}
+
+.weather-icon-03d {
+    background-image: url(../../assets/icons/03d.svg);
+}
+
+.weather-icon-04d {
+    background-image: url(../../assets/icons/04d.svg);
+}
+
+.weather-icon-09d {
+    background-image: url(../../assets/icons/09d.svg);
+}
+
+.weather-icon-10d {
+    background-image: url(../../assets/icons/10d.svg);
+}
+
+.weather-icon-11d {
+    background-image: url(../../assets/icons/11d.svg);
+}
+
+.weather-icon-13d {
+    background-image: url(../../assets/icons/13d.svg);
+}
+
+.weather-icon-50d {
+    background-image: url(../../assets/icons/50d.svg);
+}
