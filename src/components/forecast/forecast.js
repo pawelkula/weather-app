@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Alert, Input } from 'antd';
 import isEmpty from 'lodash.isempty';
 import axios from 'axios';
-import covertTimeStampToDateString from '../../utils/covertTsToDateString';
+import ForecastItem from '../forecast-item/forecast-item';
+import ForecastResultHeader from '../forecast-result-header/forecast-result-header';
+
 import MESSAGES from '../../constants/messages';
+import WEATHER_API_URL from '../../constants/api';
 
 import './forecast.css';
 
 const { Search } = Input;
-
-const WEATHER_API_PARAMETERS = `cnt=5&units=metric&appid=${process.env.REACT_APP_WEATHER_ID}`;
-const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast/daily?${WEATHER_API_PARAMETERS}&q=`;
 
 function Forecast() {
   const [data, setData] = useState({});
@@ -26,7 +26,6 @@ function Forecast() {
 
         setError('');
         setData(result.data);
-
       } catch (error) {
         if (error.response && error.response.status === 404) {
           setError(MESSAGES.API_NOT_FOUND);
@@ -41,10 +40,7 @@ function Forecast() {
     fetchData();
   }, [city]);
 
-  const onSearch = (value) => {
-    console.log('forecast ', value);
-    setCity(value);
-  };
+  const onSearch = (value) => setCity(value);
 
   return (
     <div>
@@ -55,26 +51,19 @@ function Forecast() {
         size="large"
         onSearch={onSearch}
       />
-      {
-        error && (
-          <Alert
-            message={error}
-            type="error"
-          />
-        )
-      }
+      {error && (
+        <Alert
+          message={error}
+          type="error"
+        />
+      )}
       {
         !isEmpty(data) && (
           <div>
-            <h3>{MESSAGES.FORECAST_RESULTS} {data.city.name}, {data.city.country}</h3>
+            <ForecastResultHeader city={data.city} />
             {
-              data.list.map(item => (
-                <div key={item.dt}>
-                  {covertTimeStampToDateString(item.dt)}
-                  <div>
-                    {item.temp.day} &deg;C
-                  </div>
-                </div>
+              data.list.map((item) => (
+                <ForecastItem key={item.dt} data={item} />
               ))
             }
           </div>
