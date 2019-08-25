@@ -1,7 +1,7 @@
 # Project setup
 
 1. Clone the repository
-2. Switch the Node to 12.6.0 (using nvm) and install dependencies using yarn `yarn` or npm `npm install`). You may try to run the project using other Node.js version (should work but I didn't test it).
+2. Switch the Node to 12.6.0 (using nvm) and install dependencies using yarn `yarn` or npm `npm install`. You may try to run the project using other Node.js version (should work but I didn't test it).
 3. Go to the root folder and rename `.env.sample` to just `.env`. Replace `yourOpenWeatherAppId` string by valid (working) [openweathermap](https://openweathermap.org/api) API key.
 5. Start the project using `yarn start` or `npm start`
 
