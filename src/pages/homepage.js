@@ -1,12 +1,18 @@
 import React from 'react';
-import Search from "../components/search/search";
+import { Row, Col } from 'antd';
+import Search from "../components/search-input/search-input";
+
+import './homepage.css';
 
 function HomePage() {
   return (
-    <div className="homepage">
-      <h1>Weather App</h1>
-      <Search />
-    </div>
+    <Row className="homepage" type="flex" justify="center">
+      <Col className="homepage-content" span={12}>
+        <h1 className="homepage-header">Weather App</h1>
+        <div className="homepage-subtitle">a very basic weather service</div>
+        <Search />
+      </Col>
+    </Row>
   )
 }
 
