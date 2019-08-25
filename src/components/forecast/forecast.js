@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Input } from 'antd';
+import { Alert, Input } from 'antd';
 import isEmpty from 'lodash.isempty';
 import axios from 'axios';
+import covertTimeStampToDateString from '../../utils/covertTsToDateString';
+import MESSAGES from '../../constants/messages';
+
+import './forecast.css';
 
 const { Search } = Input;
 
@@ -11,12 +15,27 @@ const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast/daily?
 function Forecast() {
   const [data, setData] = useState({});
   const [city, setCity] = useState('Krakow');
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(`${WEATHER_API_URL}${city}`);
+    if (!city) return;
 
-      setData(result.data);
+    const fetchData = async () => {
+      try {
+        const result = await axios(`${WEATHER_API_URL}${city}`);
+
+        setError('');
+        setData(result.data);
+
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          setError(MESSAGES.API_NOT_FOUND);
+        } else {
+          setError(MESSAGES.API_ERROR);
+        }
+
+        setData({});
+      }
     };
 
     fetchData();
@@ -32,18 +51,26 @@ function Forecast() {
       <Search
         className="search"
         enterButton
-        placeholder="Type city name..."
+        placeholder={MESSAGES.SEARCH_PLACEHOLDER}
         size="large"
         onSearch={onSearch}
       />
       {
+        error && (
+          <Alert
+            message={error}
+            type="error"
+          />
+        )
+      }
+      {
         !isEmpty(data) && (
           <div>
-            <h3>5-days forecast from {data.city.name}, {data.city.country}</h3>
+            <h3>{MESSAGES.FORECAST_RESULTS} {data.city.name}, {data.city.country}</h3>
             {
               data.list.map(item => (
                 <div key={item.dt}>
-                  {item.dt}
+                  {covertTimeStampToDateString(item.dt)}
                   <div>
                     {item.temp.day} &deg;C
                   </div>
